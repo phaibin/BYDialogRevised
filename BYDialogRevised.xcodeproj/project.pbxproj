@@ -16,6 +16,10 @@
 		35F295AB14A6C4E900A33008 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35F295A914A6C4E900A33008 /* MainWindow.xib */; };
 		35F295AE14A6C4E900A33008 /* BYDialogRevisedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 35F295AD14A6C4E900A33008 /* BYDialogRevisedViewController.m */; };
 		35F295B114A6C4E900A33008 /* BYDialogRevisedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35F295AF14A6C4E900A33008 /* BYDialogRevisedViewController.xib */; };
+		35F295BB14A6C82400A33008 /* BYDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 35F295B914A6C82400A33008 /* BYDialog.m */; };
+		35F295BC14A6C82400A33008 /* masque_black.png in Resources */ = {isa = PBXBuildFile; fileRef = 35F295BA14A6C82400A33008 /* masque_black.png */; };
+		35F295C014A6CC1D00A33008 /* ChoosePlaneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 35F295BE14A6CC1D00A33008 /* ChoosePlaneViewController.m */; };
+		35F295C114A6CC1D00A33008 /* ChoosePlaneViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35F295BF14A6CC1D00A33008 /* ChoosePlaneViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,16 +27,22 @@
 		35F2959714A6C4E900A33008 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		35F2959914A6C4E900A33008 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		35F2959B14A6C4E900A33008 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		35F2959F14A6C4E900A33008 /* BYDialogRevised-Info.plist */ = {isa = PBXFileReference; path = "BYDialogRevised-Info.plist"; sourceTree = "<group>"; };
+		35F2959F14A6C4E900A33008 /* BYDialogRevised-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BYDialogRevised-Info.plist"; sourceTree = "<group>"; };
 		35F295A114A6C4E900A33008 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		35F295A314A6C4E900A33008 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		35F295A514A6C4E900A33008 /* BYDialogRevised-Prefix.pch */ = {isa = PBXFileReference; path = "BYDialogRevised-Prefix.pch"; sourceTree = "<group>"; };
-		35F295A614A6C4E900A33008 /* BYDialogRevisedAppDelegate.h */ = {isa = PBXFileReference; path = BYDialogRevisedAppDelegate.h; sourceTree = "<group>"; };
+		35F295A514A6C4E900A33008 /* BYDialogRevised-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BYDialogRevised-Prefix.pch"; sourceTree = "<group>"; };
+		35F295A614A6C4E900A33008 /* BYDialogRevisedAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BYDialogRevisedAppDelegate.h; sourceTree = "<group>"; };
 		35F295A714A6C4E900A33008 /* BYDialogRevisedAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BYDialogRevisedAppDelegate.m; sourceTree = "<group>"; };
 		35F295AA14A6C4E900A33008 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
-		35F295AC14A6C4E900A33008 /* BYDialogRevisedViewController.h */ = {isa = PBXFileReference; path = BYDialogRevisedViewController.h; sourceTree = "<group>"; };
+		35F295AC14A6C4E900A33008 /* BYDialogRevisedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BYDialogRevisedViewController.h; sourceTree = "<group>"; };
 		35F295AD14A6C4E900A33008 /* BYDialogRevisedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BYDialogRevisedViewController.m; sourceTree = "<group>"; };
 		35F295B014A6C4E900A33008 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/BYDialogRevisedViewController.xib; sourceTree = "<group>"; };
+		35F295B814A6C82400A33008 /* BYDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BYDialog.h; sourceTree = "<group>"; };
+		35F295B914A6C82400A33008 /* BYDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BYDialog.m; sourceTree = "<group>"; };
+		35F295BA14A6C82400A33008 /* masque_black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = masque_black.png; sourceTree = "<group>"; };
+		35F295BD14A6CC1D00A33008 /* ChoosePlaneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChoosePlaneViewController.h; sourceTree = "<group>"; };
+		35F295BE14A6CC1D00A33008 /* ChoosePlaneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChoosePlaneViewController.m; sourceTree = "<group>"; };
+		35F295BF14A6CC1D00A33008 /* ChoosePlaneViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChoosePlaneViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +95,10 @@
 				35F295AC14A6C4E900A33008 /* BYDialogRevisedViewController.h */,
 				35F295AD14A6C4E900A33008 /* BYDialogRevisedViewController.m */,
 				35F295AF14A6C4E900A33008 /* BYDialogRevisedViewController.xib */,
+				35F295BD14A6CC1D00A33008 /* ChoosePlaneViewController.h */,
+				35F295BE14A6CC1D00A33008 /* ChoosePlaneViewController.m */,
+				35F295BF14A6CC1D00A33008 /* ChoosePlaneViewController.xib */,
+				35F295B714A6C82400A33008 /* BYDialog */,
 				35F2959E14A6C4E900A33008 /* Supporting Files */,
 			);
 			path = BYDialogRevised;
@@ -99,6 +113,16 @@
 				35F295A514A6C4E900A33008 /* BYDialogRevised-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		35F295B714A6C82400A33008 /* BYDialog */ = {
+			isa = PBXGroup;
+			children = (
+				35F295B814A6C82400A33008 /* BYDialog.h */,
+				35F295B914A6C82400A33008 /* BYDialog.m */,
+				35F295BA14A6C82400A33008 /* masque_black.png */,
+			);
+			path = BYDialog;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -151,6 +175,8 @@
 				35F295A214A6C4E900A33008 /* InfoPlist.strings in Resources */,
 				35F295AB14A6C4E900A33008 /* MainWindow.xib in Resources */,
 				35F295B114A6C4E900A33008 /* BYDialogRevisedViewController.xib in Resources */,
+				35F295BC14A6C82400A33008 /* masque_black.png in Resources */,
+				35F295C114A6CC1D00A33008 /* ChoosePlaneViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -164,6 +190,8 @@
 				35F295A414A6C4E900A33008 /* main.m in Sources */,
 				35F295A814A6C4E900A33008 /* BYDialogRevisedAppDelegate.m in Sources */,
 				35F295AE14A6C4E900A33008 /* BYDialogRevisedViewController.m in Sources */,
+				35F295BB14A6C82400A33008 /* BYDialog.m in Sources */,
+				35F295C014A6CC1D00A33008 /* ChoosePlaneViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

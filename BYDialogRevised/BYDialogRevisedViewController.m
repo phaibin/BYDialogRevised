@@ -7,6 +7,8 @@
 //
 
 #import "BYDialogRevisedViewController.h"
+#import "ChoosePlaneViewController.h"
+#import "BYDialog.h"
 
 @implementation BYDialogRevisedViewController
 
@@ -39,6 +41,14 @@
 {
     // Return YES for supported orientations
     return YES;
+}
+
+- (IBAction)popupTapped:(id)sender {
+    ChoosePlaneViewController *choosePlaneViewController = [[ChoosePlaneViewController alloc] initWithNibName:@"ChoosePlaneViewController" bundle:nil];
+    BYDialog *dialog = [[BYDialog alloc] initWithFrame:CGRectZero];
+    dialog.contentView = choosePlaneViewController.view;
+    [dialog show];
+    [dialog release];
 }
 
 @end

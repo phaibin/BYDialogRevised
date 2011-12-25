@@ -7,8 +7,8 @@
 //
 
 #import "BYDialogRevisedAppDelegate.h"
-
 #import "BYDialogRevisedViewController.h"
+#import "BYDialog.h"
 
 @implementation BYDialogRevisedAppDelegate
 

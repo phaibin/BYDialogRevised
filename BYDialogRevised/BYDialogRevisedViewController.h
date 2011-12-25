@@ -10,4 +10,6 @@
 
 @interface BYDialogRevisedViewController : UIViewController
 
+- (IBAction)popupTapped:(id)sender;
+
 @end
