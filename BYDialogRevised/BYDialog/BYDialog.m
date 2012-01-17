@@ -87,6 +87,7 @@ static UIWindow *gMaskWindow = nil;
     [self sizeToFit];
     CGSize screenSize = [UIScreen mainScreen].bounds.size;
     self.center = CGPointMake(screenSize.width/2, screenSize.height/2);
+    self.frame = CGRectIntegral(self.frame);
     
     if (transform) {
         self.transform = [self _transformForOrientation];
