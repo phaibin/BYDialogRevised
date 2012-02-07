@@ -19,6 +19,7 @@
 //
 
 #import "BYDialog.h"
+#import <QuartzCore/QuartzCore.h>
 
 #pragma mark -
 #pragma mark Global
@@ -88,7 +89,6 @@ static UIWindow *gMaskWindow = nil;
     CGSize screenSize = [UIScreen mainScreen].bounds.size;
     self.center = CGPointMake(screenSize.width/2, screenSize.height/2);
     self.frame = CGRectIntegral(self.frame);
-    
     if (transform) {
         self.transform = [self _transformForOrientation];
     }
@@ -310,10 +310,11 @@ static UIWindow *gMaskWindow = nil;
 {
     [_contentView autorelease];
     _contentView = [contentView retain];
-    _contentView.autoresizingMask = \
-    UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin |\
-    UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
-    [self addSubview:_contentView];
+//    _contentView.autoresizingMask = \
+//    UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin |\
+//    UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
+    _containerView.frame = CGRectMake(0, 0, _contentView.frame.size.width, _contentView.frame.size.height);
+    [_containerView addSubview:_contentView];
 }
 
 #pragma mark -
@@ -322,12 +323,22 @@ static UIWindow *gMaskWindow = nil;
 - (id)initWithFrame:(CGRect)frame{
     if (self = [super initWithFrame:frame]) {
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(close:) name:CLOSE_DIALOG_NOTIFICATION object:nil];
+        _containerView = [[UIView alloc] initWithFrame:CGRectZero];
+        _containerView.backgroundColor = [UIColor clearColor];
+        _containerView.autoresizingMask = \
+        UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin |\
+        UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
+        [_containerView.layer setShadowRadius:5];
+        [_containerView.layer setShadowOpacity:0.5];
+        [_containerView.layer setShadowColor:[UIColor blackColor].CGColor];
+        [self addSubview:_containerView];
+        [_containerView release];
     }
     return self;
 }
 
 - (CGSize)sizeThatFits:(CGSize)size{
-    return self.contentView.frame.size;
+    return _containerView.frame.size;
 }
 
 - (void)dealloc {  

@@ -22,11 +22,12 @@
 
 @interface BYDialog : UIView {
   
- @protected 
-  UIView *_contentView;
-  UIDeviceOrientation _orientation;
-  BOOL _showing;
-  BOOL _presented;
+@protected 
+    UIView *_containerView;
+    UIView *_contentView;
+    UIDeviceOrientation _orientation;
+    BOOL _showing;
+    BOOL _presented;
 }
 @property (nonatomic, readonly) BOOL visible;
 @property (nonatomic, readwrite, retain) IBOutlet UIView *contentView;
