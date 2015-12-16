@@ -87,7 +87,7 @@ static UIWindow *gMaskWindow = nil;
     _orientation = SharedApp.statusBarOrientation;
     [self sizeToFit];
     CGSize screenSize = [UIScreen mainScreen].bounds.size;
-    self.center = CGPointMake(screenSize.width/2, screenSize.height/2);
+    self.center = CGPointMake(screenSize.width/2+self.centerOffset.width, screenSize.height/2+self.centerOffset.height);
     self.frame = CGRectIntegral(self.frame);
     if (transform) {
         self.transform = [self _transformForOrientation];
@@ -182,8 +182,6 @@ static UIWindow *gMaskWindow = nil;
     [self _unregisterObservers];
     
     [self didDismissDialog];
-    
-    [self release];
 }
 
 #pragma mark -
@@ -201,7 +199,6 @@ static UIWindow *gMaskWindow = nil;
         UIImage *image = [UIImage imageNamed:@"masque_black.png"];
         UIImageView *backgroundView = [[UIImageView alloc] initWithImage:image];
         [gMaskWindow addSubview:backgroundView];
-        [backgroundView release];
         
         // FIXME: window at index 0 is not awalys previous key window.
         gPreviouseKeyWindow = [SharedApp.windows objectAtIndex:0];
@@ -222,7 +219,9 @@ static UIWindow *gMaskWindow = nil;
         [gPreviouseKeyWindow makeKeyAndVisible];
         gPreviouseKeyWindow = nil;
         
-        [gMaskWindow release];
+        for (UIView* view in gMaskWindow.subviews) {
+            [view removeFromSuperview];
+        }
         gMaskWindow = nil;
     }
 }
@@ -274,7 +273,6 @@ static UIWindow *gMaskWindow = nil;
     [gDialogStack removeLastObject];
     
     if ([gDialogStack count] == 0) {
-        [gDialogStack release];
         gDialogStack = nil;
     }
 }
@@ -308,8 +306,9 @@ static UIWindow *gMaskWindow = nil;
 
 - (void)setContentView:(UIView *)contentView
 {
-    [_contentView autorelease];
-    _contentView = [contentView retain];
+    _contentView = contentView;
+    _contentView.layer.cornerRadius = 5;
+    _contentView.clipsToBounds = YES;
 //    _contentView.autoresizingMask = \
 //    UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin |\
 //    UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
@@ -317,12 +316,17 @@ static UIWindow *gMaskWindow = nil;
     [_containerView addSubview:_contentView];
 }
 
+- (UIWindow *)window
+{
+    return gMaskWindow;
+}
+
 #pragma mark -
 #pragma mark UIView
 
 - (id)initWithFrame:(CGRect)frame{
     if (self = [super initWithFrame:frame]) {
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(close:) name:CLOSE_DIALOG_NOTIFICATION object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(close:) name:@"kNotificationBYDialogClosed" object:nil];
         _containerView = [[UIView alloc] initWithFrame:CGRectZero];
         _containerView.backgroundColor = [UIColor clearColor];
         _containerView.autoresizingMask = \
@@ -332,7 +336,6 @@ static UIWindow *gMaskWindow = nil;
         [_containerView.layer setShadowOpacity:0.5];
         [_containerView.layer setShadowColor:[UIColor blackColor].CGColor];
         [self addSubview:_containerView];
-        [_containerView release];
     }
     return self;
 }
@@ -341,28 +344,23 @@ static UIWindow *gMaskWindow = nil;
     return _containerView.frame.size;
 }
 
-- (void)dealloc {  
-    [super dealloc];
-}
-
 - (void)close:(NSNotification *)notification
 {
     [self dismissAnimated:YES];
-    [notification.object release];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark -
 #pragma mark Public
 
-- (void)show{
+- (void)showAnimated:(BOOL)animated
+{
     if (_showing) {
         return;
     }
     _showing = YES;
     
     // Prepare dialog to show
-    [self retain];
     [self _registerObservers];
     [self _sizeToFitOrientation:NO];
     
@@ -374,7 +372,8 @@ static UIWindow *gMaskWindow = nil;
     }
     [BYDialog _maskWindowAddDialog:self];
     
-    [self _bounce];
+    if (animated)
+        [self _bounce];
 }
 
 - (void)dismissAnimated:(BOOL)animated{

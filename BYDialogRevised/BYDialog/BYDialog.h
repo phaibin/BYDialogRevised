@@ -31,8 +31,10 @@
 }
 @property (nonatomic, readonly) BOOL visible;
 @property (nonatomic, readwrite, retain) IBOutlet UIView *contentView;
+@property (nonatomic, assign) CGSize centerOffset;
+@property (nonatomic, weak, readonly) UIWindow *window;
 
-- (void)show;
+- (void)showAnimated:(BOOL)animated;
 - (void)dismissAnimated:(BOOL)animated;
 
 // Default to do nothing.
